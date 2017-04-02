@@ -1,0 +1,909 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/tschaub/gh-pages">gh-pages (v0.12.0)</a>
+</h1>
+<h4>Publish to a gh-pages branch on GitHub (or any other branch on any other remote)</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gh-pages">module gh-pages</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.clean">
+            function <span class="apidocSignatureSpan">gh-pages.</span>clean
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git">
+            function <span class="apidocSignatureSpan">gh-pages.</span>git
+            <span class="apidocSignatureSpan">(args, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.publish">
+            function <span class="apidocSignatureSpan">gh-pages.</span>publish
+            <span class="apidocSignatureSpan">(basePath, config, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">gh-pages.</span>util</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gh-pages.git">module gh-pages.git</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.git">
+            function <span class="apidocSignatureSpan">gh-pages.</span>git
+            <span class="apidocSignatureSpan">(args, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.add">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>add
+            <span class="apidocSignatureSpan">(files, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.checkout">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>checkout
+            <span class="apidocSignatureSpan">(remote, branch, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.clean">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>clean
+            <span class="apidocSignatureSpan">(cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.clone">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>clone
+            <span class="apidocSignatureSpan">(repo, dir, branch, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.commit">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>commit
+            <span class="apidocSignatureSpan">(message, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.exe">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>exe
+            <span class="apidocSignatureSpan">(exe)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.fetch">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>fetch
+            <span class="apidocSignatureSpan">(remote, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.init">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>init
+            <span class="apidocSignatureSpan">(cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.push">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>push
+            <span class="apidocSignatureSpan">(remote, branch, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.reset">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>reset
+            <span class="apidocSignatureSpan">(remote, branch, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.rm">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>rm
+            <span class="apidocSignatureSpan">(files, cwd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.git.tag">
+            function <span class="apidocSignatureSpan">gh-pages.git.</span>tag
+            <span class="apidocSignatureSpan">(name, cwd)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gh-pages.util">module gh-pages.util</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.util.byShortPath">
+            function <span class="apidocSignatureSpan">gh-pages.util.</span>byShortPath
+            <span class="apidocSignatureSpan">(a, b)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.util.copy">
+            function <span class="apidocSignatureSpan">gh-pages.util.</span>copy
+            <span class="apidocSignatureSpan">(files, base, dest)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.util.copyFile">
+            function <span class="apidocSignatureSpan">gh-pages.util.</span>copyFile
+            <span class="apidocSignatureSpan">(obj, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.util.dirsToCreate">
+            function <span class="apidocSignatureSpan">gh-pages.util.</span>dirsToCreate
+            <span class="apidocSignatureSpan">(files)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gh-pages.util.uniqueDirs">
+            function <span class="apidocSignatureSpan">gh-pages.util.</span>uniqueDirs
+            <span class="apidocSignatureSpan">(files)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gh-pages" id="apidoc.module.gh-pages">module gh-pages</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.clean" id="apidoc.element.gh-pages.clean">
+        function <span class="apidocSignatureSpan">gh-pages.</span>clean
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clean() {
+  rimraf.sync(getCacheDir());
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git" id="apidoc.element.gh-pages.git">
+        function <span class="apidocSignatureSpan">gh-pages.</span>git
+        <span class="apidocSignatureSpan">(args, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">git = function (args, cwd) {
+  return spawn(git, args, cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.publish" id="apidoc.element.gh-pages.publish">
+        function <span class="apidocSignatureSpan">gh-pages.</span>publish
+        <span class="apidocSignatureSpan">(basePath, config, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function publish(basePath, config, callback) {
+  if (typeof config === 'function') {
+    callback = config;
+    config = {};
+  }
+
+  var defaults = {
+    add: false,
+    git: 'git',
+    clone: getCacheDir(),
+    dotfiles: false,
+    branch: 'gh-pages',
+    remote: 'origin',
+    src: '**/*',
+    only: '.',
+    push: true,
+    message: 'Updates',
+    silent: false,
+    logger: function() {}
+  };
+
+  // override defaults with any task options
+  // TODO: Require Node &gt;= 4 and use Object.assign
+  var options = {};
+  for (var d in defaults) {
+    options[d] = defaults[d];
+  }
+  for (var c in config) {
+    options[c] = config[c];
+  }
+
+  function log(message) {
+    if (!options.silent) {
+      options.logger(message);
+    }
+  }
+
+  if (!callback) {
+    callback = function(err) {
+      if (err) {
+        log(err.message);
+      }
+    };
+  }
+
+  function done(err) {
+    try {
+      callback(err);
+    } catch (err2) {
+      log('Publish callback threw: ', err2.message);
+    }
+  }
+
+  try {
+    if (!fs.statSync(basePath).isDirectory()) {
+      done(new Error('The "base" option must be an existing directory'));
+      return;
+    }
+  } catch (err) {
+    done(err);
+    return;
+  }
+
+  var files = globby.sync(options.src, {
+    cwd: basePath,
+    dot: options.dotfiles
+  }).filter(function(file) {
+    return !fs.statSync(path.join(basePath, file)).isDirectory();
+  });
+
+  if (!Array.isArray(files) || files.length === 0) {
+    done(new Error('Files must be provided in the "src" property.'));
+    return;
+  }
+
+  var only = globby.sync(options.only, {cwd: basePath});
+
+  git.exe(options.git);
+
+  var repoUrl;
+  getRepo(options)
+      .then(function(repo) {
+        repoUrl = repo;
+        log('Cloning ' + repo + ' into ' + options.clone);
+        return git.clone(repo, options.clone, options.branch, options);
+      })
+      .then(function() {
+        return getRemoteUrl(options.clone, options.remote)
+            .then(function(url) {
+              if (url !== repoUrl) {
+                var message = 'Remote url mismatch.  Got "' + url + '" ' +
+                    'but expected "' + repoUrl + '" in ' + options.clone +
+                    '.  If you have changed your "repo" option, try ' +
+                    'running the "clean" task first.';
+                return Q.reject(new Error(message));
+              } else {
+                return Q.resolve();
+              }
+            });
+      })
+      .then(function() {
+        // only required if someone mucks with the checkout between builds
+        log('Cleaning');
+        return git.clean(options.clone);
+      })
+      .then(function() {
+        log('Fetching ' + options.remote);
+        return git.fetch(options.remote, options.clone);
+      })
+      .then(function() {
+        log('Checking out ' + options.remote + '/' +
+            options.branch);
+        return git.checkout(options.remote, options.branch,
+            options.clone);
+      })
+      .then(function() {
+        if (!options.add) {
+          log('Removing files');
+          return git.rm(only.join(' '), options.clone);
+        } else {
+          return Q.resolve();
+        }
+      })
+      .then(function() {
+        log('Copying files');
+        return copy(files, basePath, options.clone);
+      })
+      .then(function() {
+        log('Adding all');
+        return git.add('.', options.clone);
+      })
+      .then(function() {
+        if (options.user) {
+          return git(['config', 'user.email', options.user.email],
+              options.clone)
+              .then(function() {
+                return git(['config', 'user.name', options.user.name],
+                    options.clone);
+              });
+        } else {
+          return Q.resolve();
+        }
+      })
+      .then(function() {
+        log('Committing');
+        return git.commit(options.message, options.clone);
+      })
+      .then(function() {
+        if (options.tag) {
+          log('Tagging');
+          var deferred = Q.defer();
+          git.tag(options.tag, options.clone)
+            .then(function() {
+              return deferred.resolve();
+            }) ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Basic Usage
+
+```js
+var ghpages = require('gh-pages');
+var path = require('path');
+
+ghpages.<span class="apidocCodeKeywordSpan">publish</span>(path.join(__dirname, 'dist'), function(err) { ... });
+```
+
+
+## `publish`
+
+```js
+ghpages.publish(basePath, callback);
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gh-pages.git" id="apidoc.module.gh-pages.git">module gh-pages.git</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.git" id="apidoc.element.gh-pages.git.git">
+        function <span class="apidocSignatureSpan">gh-pages.</span>git
+        <span class="apidocSignatureSpan">(args, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">git = function (args, cwd) {
+  return spawn(git, args, cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.add" id="apidoc.element.gh-pages.git.add">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>add
+        <span class="apidocSignatureSpan">(files, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function add(files, cwd) {
+  return spawn(git, ['add', files], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.checkout" id="apidoc.element.gh-pages.git.checkout">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>checkout
+        <span class="apidocSignatureSpan">(remote, branch, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function checkout(remote, branch, cwd) {
+  var treeish = remote + '/' + branch;
+  return spawn(git, ['ls-remote', '--exit-code', '.', treeish], cwd)
+      .then(function() {
+        // branch exists on remote, hard reset
+        return spawn(git, ['checkout', branch], cwd)
+            .then(function() {
+              return clean(cwd);
+            })
+            .then(function() {
+              return reset(remote, branch, cwd);
+            });
+      }, function(error) {
+        if (error instanceof ProcessError &amp;&amp; error.code === 2) {
+          // branch doesn't exist, create an orphan
+          return spawn(git, ['checkout', '--orphan', branch], cwd);
+        } else {
+          // unhandled error
+          return Q.reject(error);
+        }
+      });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.clean" id="apidoc.element.gh-pages.git.clean">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>clean
+        <span class="apidocSignatureSpan">(cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clean(cwd) {
+  return spawn(git, ['clean', '-f', '-d'], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.clone" id="apidoc.element.gh-pages.git.clone">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>clone
+        <span class="apidocSignatureSpan">(repo, dir, branch, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clone(repo, dir, branch, options) {
+  return fs.exists(dir).then(function(exists) {
+    if (exists) {
+      return Q.resolve();
+    } else {
+      return fs.makeTree(path.dirname(path.resolve(dir))).then(function() {
+        var args = ['clone', repo, dir, '--branch', branch, '--single-branch', '--origin', options.remote];
+        if (options.depth) {
+          args.push('--depth', options.depth);
+        }
+        return spawn(git, args).fail(function(err) {
+          // try again without banch options
+          return spawn(git, ['clone', repo, dir, '--origin', options.remote]);
+        });
+      });
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.commit" id="apidoc.element.gh-pages.git.commit">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>commit
+        <span class="apidocSignatureSpan">(message, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function commit(message, cwd) {
+  return spawn(git, ['diff-index', '--quiet', 'HEAD', '.'], cwd)
+      .then(function() {
+        // nothing to commit
+        return Q.resolve();
+      })
+      .fail(function() {
+        return spawn(git, ['commit', '-m', message], cwd);
+      });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.exe" id="apidoc.element.gh-pages.git.exe">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>exe
+        <span class="apidocSignatureSpan">(exe)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exe = function (exe) {
+  git = exe;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.fetch" id="apidoc.element.gh-pages.git.fetch">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>fetch
+        <span class="apidocSignatureSpan">(remote, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fetch(remote, cwd) {
+  return spawn(git, ['fetch', remote], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.init" id="apidoc.element.gh-pages.git.init">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>init
+        <span class="apidocSignatureSpan">(cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function init(cwd) {
+  return spawn(git, ['init'], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.push" id="apidoc.element.gh-pages.git.push">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>push
+        <span class="apidocSignatureSpan">(remote, branch, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function push(remote, branch, cwd) {
+  return spawn(git, ['push', '--tags', remote, branch], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @return {Promise} A promise.
+ */
+function spawn(exe, args, cwd) {
+var deferred = Q.defer();
+var child = cp.spawn(exe, args, {cwd: cwd || process.cwd()});
+var buffer = [];
+child.stderr.on('data', function(chunk) {
+  buffer.<span class="apidocCodeKeywordSpan">push</span>(chunk.toString());
+});
+child.stdout.on('data', function(chunk) {
+  deferred.notify(chunk);
+});
+child.on('close', function(code) {
+  if (code) {
+    var msg = buffer.join('') || 'Process failed: ' + code;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.reset" id="apidoc.element.gh-pages.git.reset">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>reset
+        <span class="apidocSignatureSpan">(remote, branch, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reset(remote, branch, cwd) {
+  return spawn(git, ['reset', '--hard', remote + '/' + branch], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.rm" id="apidoc.element.gh-pages.git.rm">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>rm
+        <span class="apidocSignatureSpan">(files, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function rm(files, cwd) {
+  return spawn(git, ['rm', '--ignore-unmatch', '-r', '-f', files], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.git.tag" id="apidoc.element.gh-pages.git.tag">
+        function <span class="apidocSignatureSpan">gh-pages.git.</span>tag
+        <span class="apidocSignatureSpan">(name, cwd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function tag(name, cwd) {
+  return spawn(git, ['tag', name], cwd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gh-pages.util" id="apidoc.module.gh-pages.util">module gh-pages.util</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.util.byShortPath" id="apidoc.element.gh-pages.util.byShortPath">
+        function <span class="apidocSignatureSpan">gh-pages.util.</span>byShortPath
+        <span class="apidocSignatureSpan">(a, b)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">byShortPath = function (a, b) {
+  var aParts = a.split(path.sep);
+  var bParts = b.split(path.sep);
+  var aLength = aParts.length;
+  var bLength = bParts.length;
+  var cmp = 0;
+  if (aLength &lt; bLength) {
+    cmp = -1;
+  } else if (aLength &gt; bLength) {
+    cmp = 1;
+  } else {
+    var aPart, bPart;
+    for (var i = 0; i &lt; aLength; ++i) {
+      aPart = aParts[i];
+      bPart = bParts[i];
+      if (aPart &lt; bPart) {
+        cmp = -1;
+        break;
+      } else if (aPart &gt; bPart) {
+        cmp = 1;
+        break;
+      }
+    }
+  }
+  return cmp;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.util.copy" id="apidoc.element.gh-pages.util.copy">
+        function <span class="apidocSignatureSpan">gh-pages.util.</span>copy
+        <span class="apidocSignatureSpan">(files, base, dest)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">copy = function (files, base, dest) {
+  var deferred = Q.defer();
+
+  var pairs = [];
+  var destFiles = [];
+  files.forEach(function(file) {
+    var src = path.resolve(base, file);
+    var relative = path.relative(base, src);
+    var target = path.join(dest, relative);
+    pairs.push({
+      src: src,
+      dest: target
+    });
+    destFiles.push(target);
+  });
+
+  async.eachSeries(dirsToCreate(destFiles), makeDir, function(err) {
+    if (err) {
+      return deferred.reject(err);
+    }
+    async.each(pairs, copyFile, function(err) {
+      if (err) {
+        return deferred.reject(err);
+      } else {
+        return deferred.resolve();
+      }
+    });
+  });
+
+  return deferred.promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.util.copyFile" id="apidoc.element.gh-pages.util.copyFile">
+        function <span class="apidocSignatureSpan">gh-pages.util.</span>copyFile
+        <span class="apidocSignatureSpan">(obj, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">copyFile = function (obj, callback) {
+  var called = false;
+  function done(err) {
+    if (!called) {
+      called = true;
+      callback(err);
+    }
+  }
+
+  var read = fs.createReadStream(obj.src);
+  read.on('error', function(err) {
+    done(err);
+  });
+
+  var write = fs.createWriteStream(obj.dest);
+  write.on('error', function(err) {
+    done(err);
+  });
+  write.on('close', function(ex) {
+    done();
+  });
+
+  read.pipe(write);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.util.dirsToCreate" id="apidoc.element.gh-pages.util.dirsToCreate">
+        function <span class="apidocSignatureSpan">gh-pages.util.</span>dirsToCreate
+        <span class="apidocSignatureSpan">(files)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dirsToCreate = function (files) {
+  return uniqueDirs(files).sort(byShortPath);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gh-pages.util.uniqueDirs" id="apidoc.element.gh-pages.util.uniqueDirs">
+        function <span class="apidocSignatureSpan">gh-pages.util.</span>uniqueDirs
+        <span class="apidocSignatureSpan">(files)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uniqueDirs = function (files) {
+  var dirs = {};
+  files.forEach(function(filepath) {
+    var parts = path.dirname(filepath).split(path.sep);
+    var partial = parts[0];
+    dirs[partial] = true;
+    for (var i = 1, ii = parts.length; i &lt; ii; ++i) {
+      partial = path.join(partial, parts[i]);
+      dirs[partial] = true;
+    }
+  });
+  return Object.keys(dirs);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
