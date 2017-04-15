@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/tschaub/gh-pages"
-
-    >gh-pages (v0.12.0)</a>
+    <a href="https://github.com/tschaub/gh-pages">gh-pages (v0.12.0)</a>
 </h1>
 <h4>Publish to a gh-pages branch on GitHub (or any other branch on any other remote)</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gh-pages">module gh-pages</a><ol>
 
@@ -110,28 +103,28 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function publish(basePath, config, callback) {
-  if (typeof config === &#x27;function&#x27;) {
+  if (typeof config === 'function') {
     callback = config;
     config = {};
   }
 
   var defaults = {
     add: false,
-    git: &#x27;git&#x27;,
+    git: 'git',
     clone: getCacheDir(),
     dotfiles: false,
-    branch: &#x27;gh-pages&#x27;,
-    remote: &#x27;origin&#x27;,
-    src: &#x27;**/*&#x27;,
-    only: &#x27;.&#x27;,
+    branch: 'gh-pages',
+    remote: 'origin',
+    src: '**/*',
+    only: '.',
     push: true,
-    message: &#x27;Updates&#x27;,
+    message: 'Updates',
     silent: false,
     logger: function() {}
   };
 
   // override defaults with any task options
-  // TODO: Require Node &#x3e;= 4 and use Object.assign
+  // TODO: Require Node &gt;= 4 and use Object.assign
   var options = {};
   for (var d in defaults) {
     options[d] = defaults[d];
@@ -158,13 +151,13 @@
     try {
       callback(err);
     } catch (err2) {
-      log(&#x27;Publish callback threw: &#x27;, err2.message);
+      log('Publish callback threw: ', err2.message);
     }
   }
 
   try {
     if (!fs.statSync(basePath).isDirectory()) {
-      done(new Error(&#x27;The &#x22;base&#x22; option must be an existing directory&#x27;));
+      done(new Error('The "base" option must be an existing directory'));
       return;
     }
   } catch (err) {
@@ -180,7 +173,7 @@
   });
 
   if (!Array.isArray(files) || files.length === 0) {
-    done(new Error(&#x27;Files must be provided in the &#x22;src&#x22; property.&#x27;));
+    done(new Error('Files must be provided in the "src" property.'));
     return;
   }
 
@@ -192,17 +185,17 @@
   getRepo(options)
       .then(function(repo) {
         repoUrl = repo;
-        log(&#x27;Cloning &#x27; + repo + &#x27; into &#x27; + options.clone);
+        log('Cloning ' + repo + ' into ' + options.clone);
         return git.clone(repo, options.clone, options.branch, options);
       })
       .then(function() {
         return getRemoteUrl(options.clone, options.remote)
             .then(function(url) {
               if (url !== repoUrl) {
-                var message = &#x27;Remote url mismatch.  Got &#x22;&#x27; + url + &#x27;&#x22; &#x27; +
-                    &#x27;but expected &#x22;&#x27; + repoUrl + &#x27;&#x22; in &#x27; + options.clone +
-                    &#x27;.  If you have changed your &#x22;repo&#x22; option, try &#x27; +
-                    &#x27;running the &#x22;clean&#x22; task first.&#x27;;
+                var message = 'Remote url mismatch.  Got "' + url + '" ' +
+                    'but expected "' + repoUrl + '" in ' + options.clone +
+                    '.  If you have changed your "repo" option, try ' +
+                    'running the "clean" task first.';
                 return Q.reject(new Error(message));
               } else {
                 return Q.resolve();
@@ -211,41 +204,41 @@
       })
       .then(function() {
         // only required if someone mucks with the checkout between builds
-        log(&#x27;Cleaning&#x27;);
+        log('Cleaning');
         return git.clean(options.clone);
       })
       .then(function() {
-        log(&#x27;Fetching &#x27; + options.remote);
+        log('Fetching ' + options.remote);
         return git.fetch(options.remote, options.clone);
       })
       .then(function() {
-        log(&#x27;Checking out &#x27; + options.remote + &#x27;/&#x27; +
+        log('Checking out ' + options.remote + '/' +
             options.branch);
         return git.checkout(options.remote, options.branch,
             options.clone);
       })
       .then(function() {
         if (!options.add) {
-          log(&#x27;Removing files&#x27;);
-          return git.rm(only.join(&#x27; &#x27;), options.clone);
+          log('Removing files');
+          return git.rm(only.join(' '), options.clone);
         } else {
           return Q.resolve();
         }
       })
       .then(function() {
-        log(&#x27;Copying files&#x27;);
+        log('Copying files');
         return copy(files, basePath, options.clone);
       })
       .then(function() {
-        log(&#x27;Adding all&#x27;);
-        return git.add(&#x27;.&#x27;, options.clone);
+        log('Adding all');
+        return git.add('.', options.clone);
       })
       .then(function() {
         if (options.user) {
-          return git([&#x27;config&#x27;, &#x27;user.email&#x27;, options.user.email],
+          return git(['config', 'user.email', options.user.email],
               options.clone)
               .then(function() {
-                return git([&#x27;config&#x27;, &#x27;user.name&#x27;, options.user.name],
+                return git(['config', 'user.name', options.user.name],
                     options.clone);
               });
         } else {
@@ -253,12 +246,12 @@
         }
       })
       .then(function() {
-        log(&#x27;Committing&#x27;);
+        log('Committing');
         return git.commit(options.message, options.clone);
       })
       .then(function() {
         if (options.tag) {
-          log(&#x27;Tagging&#x27;);
+          log('Tagging');
           var deferred = Q.defer();
           git.tag(options.tag, options.clone)
             .then(function() {
@@ -269,10 +262,10 @@
 ## Basic Usage
 
 ```js
-var ghpages = require(&#x27;gh-pages&#x27;);
-var path = require(&#x27;path&#x27;);
+var ghpages = require('gh-pages');
+var path = require('path');
 
-ghpages.<span class="apidocCodeKeywordSpan">publish</span>(path.join(__dirname, &#x27;dist&#x27;), function(err) { ... });
+ghpages.<span class="apidocCodeKeywordSpan">publish</span>(path.join(__dirname, 'dist'), function(err) { ... });
 ```
 
 
@@ -292,3 +285,4 @@ ghpages.publish(basePath, callback);
     ]
 </div>
 </div>
+</body></html>
